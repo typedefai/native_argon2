@@ -120,9 +120,9 @@ class NativeArgon2 {
         final result = _argon2HashRawByType(data.type, bindings, data.params);
 
         setup.sendPort.send(_Argon2HashResponse(data.id, result));
+      } else {
+        throw UnsupportedError('Unsupported message: ${data.runtimeType}');
       }
-
-      throw UnsupportedError('Unsupported message: ${data.runtimeType}');
     });
 
     setup.sendPort.send(receivePort.sendPort);
