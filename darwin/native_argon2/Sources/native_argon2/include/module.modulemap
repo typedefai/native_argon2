@@ -1,0 +1,4 @@
+module native_argon2 {
+    header "argon2.h"
+    export *
+}
