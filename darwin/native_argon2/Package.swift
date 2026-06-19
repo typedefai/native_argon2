@@ -5,13 +5,13 @@ let package = Package(
     name: "native_argon2",
     platforms: [
         .iOS("12.0"),
-        .macOS("10.11"),
+        .macOS("10.13"),
     ],
     products: [
         .library(name: "native-argon2", targets: ["native_argon2"]),
     ],
     dependencies: [
-        .package(name: "FlutterFramework", path: "FlutterFramework"),
+        .package(name: "FlutterFramework", path: "../FlutterFramework"),
     ],
     targets: [
         .target(
@@ -19,11 +19,7 @@ let package = Package(
             dependencies: [
                 .product(name: "FlutterFramework", package: "FlutterFramework"),
             ],
-            path: "src",
-            publicHeadersPath: ".",
-            cSettings: [
-                .define("DART_SHARED_LIB"),
-            ],
+            path: "Sources/native_argon2",
             exclude: [
                 "bench.c",
                 "run.c",
@@ -33,6 +29,10 @@ let package = Package(
                 "opt.c",
                 "CMakeLists.txt",
                 "blake2/blamka-round-opt.h",
+            ],
+            publicHeadersPath: ".",
+            cSettings: [
+                .define("DART_SHARED_LIB"),
             ]
         ),
     ]
