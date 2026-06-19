@@ -11,7 +11,7 @@ let package = Package(
         .library(name: "native-argon2", targets: ["native_argon2"]),
     ],
     dependencies: [
-        .package(name: "FlutterFramework", path: "../FlutterFramework"),
+        .package(name: "FlutterFramework", path: "FlutterFramework"),
     ],
     targets: [
         .target(
@@ -19,11 +19,20 @@ let package = Package(
             dependencies: [
                 .product(name: "FlutterFramework", package: "FlutterFramework"),
             ],
-            path: "Sources/native_argon2",
-            publicHeadersPath: "include",
+            path: "src",
+            publicHeadersPath: ".",
             cSettings: [
-                .headerSearchPath("../../../src"),
-                .headerSearchPath("../../../src/blake2"),
+                .define("DART_SHARED_LIB"),
+            ],
+            exclude: [
+                "bench.c",
+                "run.c",
+                "test.c",
+                "genkat.c",
+                "genkat.h",
+                "opt.c",
+                "CMakeLists.txt",
+                "blake2/blamka-round-opt.h",
             ]
         ),
     ]
