@@ -23,6 +23,7 @@ let package = Package(
                 "opt.c",
                 "CMakeLists.txt",
                 "blake2/blamka-round-opt.h",
+                "build",
             ],
             publicHeadersPath: ".",
             cSettings: [
