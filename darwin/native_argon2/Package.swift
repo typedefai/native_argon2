@@ -10,15 +10,9 @@ let package = Package(
     products: [
         .library(name: "native-argon2", targets: ["native_argon2"]),
     ],
-    dependencies: [
-        .package(name: "FlutterFramework", path: "../FlutterFramework"),
-    ],
     targets: [
         .target(
             name: "native_argon2",
-            dependencies: [
-                .product(name: "FlutterFramework", package: "FlutterFramework"),
-            ],
             path: "Sources/native_argon2",
             exclude: [
                 "bench.c",
